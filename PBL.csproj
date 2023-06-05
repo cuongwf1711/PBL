@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C80B5237-FD45-4D5B-A8B8-288C39740F1F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PBL</RootNamespace>
+    <AssemblyName>PBL</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\AccountBLL.cs" />
+    <Compile Include="BLL\AdditionBLL.cs" />
+    <Compile Include="BLL\CustomerBLL.cs" />
+    <Compile Include="BLL\LateBLL.cs" />
+    <Compile Include="BLL\ServiceBLL.cs" />
+    <Compile Include="BLL\ICrudBLL.cs" />
+    <Compile Include="BLL\PaymentBLL.cs" />
+    <Compile Include="BLL\ReservationBLL.cs" />
+    <Compile Include="BLL\RoleBLL.cs" />
+    <Compile Include="BLL\RoomBLL.cs" />
+    <Compile Include="BLL\StaticFunc.cs" />
+    <Compile Include="BLL\TypeRoomBLL.cs" />
+    <Compile Include="BLL\VoucherBLL.cs" />
+    <Compile Include="DTO\Account.cs" />
+    <Compile Include="DTO\Addition.cs" />
+    <Compile Include="DTO\CbbItem.cs" />
+    <Compile Include="DTO\CheckBirthday.cs" />
+    <Compile Include="DTO\Customer.cs" />
+    <Compile Include="DTO\Late.cs" />
+    <Compile Include="DTO\Service.cs" />
+    <Compile Include="DTO\Payment.cs" />
+    <Compile Include="DTO\Person.cs" />
+    <Compile Include="DTO\HMSDB.cs" />
+    <Compile Include="DTO\Role.cs" />
+    <Compile Include="DTO\Room.cs" />
+    <Compile Include="DTO\TypeRoom.cs" />
+    <Compile Include="DTO\Voucher.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="DTO\Reservation.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormResetPassword.Designer.cs">
+      <DependentUpon>FormResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucBookRoom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucBookRoom.Designer.cs">
+      <DependentUpon>ucBookRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucManageCustomer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucManageCustomer.Designer.cs">
+      <DependentUpon>ucManageCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucManageEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucManageEmployee.Designer.cs">
+      <DependentUpon>ucManageEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucManageLate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucManageLate.Designer.cs">
+      <DependentUpon>ucManageLate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucManageService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucManageService.Designer.cs">
+      <DependentUpon>ucManageService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucManagePayment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucManagePayment.Designer.cs">
+      <DependentUpon>ucManagePayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucManageRole.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucManageRole.Designer.cs">
+      <DependentUpon>ucManageRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucManageRoom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucManageRoom.Designer.cs">
+      <DependentUpon>ucManageRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucManageTypeRoom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucManageTypeRoom.Designer.cs">
+      <DependentUpon>ucManageTypeRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucManageVoucher.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucManageVoucher.Designer.cs">
+      <DependentUpon>ucManageVoucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucMyAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucMyAccount.Designer.cs">
+      <DependentUpon>ucMyAccount.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormResetPassword.resx">
+      <DependentUpon>FormResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucBookRoom.resx">
+      <DependentUpon>ucBookRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucManageCustomer.resx">
+      <DependentUpon>ucManageCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucManageEmployee.resx">
+      <DependentUpon>ucManageEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucManageLate.resx">
+      <DependentUpon>ucManageLate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucManageService.resx">
+      <DependentUpon>ucManageService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucManagePayment.resx">
+      <DependentUpon>ucManagePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucManageRole.resx">
+      <DependentUpon>ucManageRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucManageRoom.resx">
+      <DependentUpon>ucManageRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucManageTypeRoom.resx">
+      <DependentUpon>ucManageTypeRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucManageVoucher.resx">
+      <DependentUpon>ucManageVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucMyAccount.resx">
+      <DependentUpon>ucMyAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

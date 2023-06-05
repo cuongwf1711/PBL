@@ -14,8 +14,7 @@ namespace PBL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormLogin());
-            Application.Run(new FormMain(123456, 1));
+            Application.Run(new FormLogin());
         }
     }
 }

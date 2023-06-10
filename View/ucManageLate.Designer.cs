@@ -45,10 +45,8 @@
             this.txtFeeLate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtMaximum = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panelGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListLates)).BeginInit();
             this.panelDetail.SuspendLayout();
@@ -152,7 +150,7 @@
             this.lb.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb.Location = new System.Drawing.Point(598, 14);
             this.lb.Name = "lb";
-            this.lb.Size = new System.Drawing.Size(86, 45);
+            this.lb.Size = new System.Drawing.Size(86, 46);
             this.lb.TabIndex = 7;
             this.lb.Text = "Late";
             // 
@@ -173,9 +171,7 @@
             // 
             this.panelDetail.Controls.Add(this.btnCancel);
             this.panelDetail.Controls.Add(this.btnConfirm);
-            this.panelDetail.Controls.Add(this.txtMaximum);
             this.panelDetail.Controls.Add(this.txtFeeLate);
-            this.panelDetail.Controls.Add(this.label5);
             this.panelDetail.Controls.Add(this.label1);
             this.panelDetail.Controls.Add(this.txtName);
             this.panelDetail.Controls.Add(this.label3);
@@ -188,7 +184,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(435, 623);
+            this.btnCancel.Location = new System.Drawing.Point(437, 521);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(185, 70);
             this.btnCancel.TabIndex = 1;
@@ -199,7 +195,7 @@
             // btnConfirm
             // 
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.Location = new System.Drawing.Point(749, 623);
+            this.btnConfirm.Location = new System.Drawing.Point(751, 521);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(185, 70);
             this.btnConfirm.TabIndex = 2;
@@ -210,7 +206,7 @@
             // txtFeeLate
             // 
             this.txtFeeLate.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFeeLate.Location = new System.Drawing.Point(606, 461);
+            this.txtFeeLate.Location = new System.Drawing.Point(606, 323);
             this.txtFeeLate.Name = "txtFeeLate";
             this.txtFeeLate.Size = new System.Drawing.Size(460, 51);
             this.txtFeeLate.TabIndex = 3;
@@ -219,7 +215,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(336, 461);
+            this.label1.Location = new System.Drawing.Point(336, 323);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 45);
             this.label1.TabIndex = 6;
@@ -233,16 +229,6 @@
             this.txtName.Size = new System.Drawing.Size(460, 51);
             this.txtName.TabIndex = 3;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(634, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 45);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Detail";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -253,23 +239,15 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Name late :";
             // 
-            // label5
+            // label3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(336, 309);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(181, 45);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Maximum :";
-            // 
-            // txtMaximum
-            // 
-            this.txtMaximum.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaximum.Location = new System.Drawing.Point(606, 309);
-            this.txtMaximum.Name = "txtMaximum";
-            this.txtMaximum.Size = new System.Drawing.Size(460, 51);
-            this.txtMaximum.TabIndex = 3;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(634, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 46);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Detail";
             // 
             // ucManageLate
             // 
@@ -311,7 +289,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtMaximum;
-        private System.Windows.Forms.Label label5;
     }
 }

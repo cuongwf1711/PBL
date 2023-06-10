@@ -29,8 +29,7 @@
                     RoleId = 1,
                     Name = "Nguyen Van Quan Ly",
                     Birthday = new DateTime(1995, 05, 21),
-                    Email = "ruivalien@gmail.com",
-                    Active = true
+                    Email = "ruivalien@gmail.com"
                 },
                 new Account
                 {
@@ -40,15 +39,14 @@
                     RoleId = 2,
                     Name = "Le Van Le Tan",
                     Birthday = new DateTime(2000, 05, 19),
-                    Email = "cuongnguyen171103@gmail.com",
-                    Active = true
+                    Email = "cuongnguyen171103@gmail.com"
                 }
             }); ;
             context.Lates.AddOrUpdate(new Late[]
             {
-                new Late { LateId = 1, Name = "Late 12h - 16h", Maximum = 4, FeeLate = 0.3m },
-                new Late { LateId = 2, Name = "Late 16h - 19h", Maximum = 7, FeeLate = 0.5m },
-                new Late { LateId = 3, Name = "Late after 19h", Maximum = 24, FeeLate = 1 },
+                new Late { LateId = 1, Name = "Late 12h - 15h", FeeLate = 0.3m },
+                new Late { LateId = 2, Name = "Late 15h - 18h", FeeLate = 0.5m },
+                new Late { LateId = 3, Name = "Late after 18h", FeeLate = 1 },
             });
             context.Vouchers.AddOrUpdate(new Voucher[]
             {

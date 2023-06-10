@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.panelBookRoom = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonEarly914 = new System.Windows.Forms.RadioButton();
-            this.radioButtonEarly59 = new System.Windows.Forms.RadioButton();
-            this.radioButtonNone = new System.Windows.Forms.RadioButton();
             this.labelTotalRoom = new System.Windows.Forms.Label();
             this.labelTotalCapacity = new System.Windows.Forms.Label();
             this.txtQuantityCustomer = new System.Windows.Forms.TextBox();
@@ -46,7 +42,6 @@
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.panelInformationCustomer = new System.Windows.Forms.Panel();
-            this.dateTimePickerBirthday = new System.Windows.Forms.DateTimePicker();
             this.dgvServiceAvailable = new System.Windows.Forms.DataGridView();
             this.cbbCountry = new System.Windows.Forms.ComboBox();
             this.txtPhoneNumberCustomer = new System.Windows.Forms.TextBox();
@@ -81,17 +76,13 @@
             this.labelTotalAddition = new System.Windows.Forms.Label();
             this.labelTotalReservation = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.labelPhoneNumber = new System.Windows.Forms.Label();
             this.labelNameCustomer = new System.Windows.Forms.Label();
-            this.labelFeeEarly = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.labelTotalPrice = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.labelCCCDCustomer = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.cbbLate = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerBirthday = new System.Windows.Forms.DateTimePicker();
             this.panelBookRoom.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoomAvailable)).BeginInit();
             this.panelInformationCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServiceAvailable)).BeginInit();
@@ -105,7 +96,6 @@
             this.panelBookRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBookRoom.Controls.Add(this.groupBox1);
             this.panelBookRoom.Controls.Add(this.labelTotalRoom);
             this.panelBookRoom.Controls.Add(this.labelTotalCapacity);
             this.panelBookRoom.Controls.Add(this.txtQuantityCustomer);
@@ -125,56 +115,10 @@
             this.panelBookRoom.Size = new System.Drawing.Size(1430, 818);
             this.panelBookRoom.TabIndex = 0;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cbbLate);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.radioButtonEarly914);
-            this.groupBox1.Controls.Add(this.radioButtonEarly59);
-            this.groupBox1.Controls.Add(this.radioButtonNone);
-            this.groupBox1.Location = new System.Drawing.Point(182, 200);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(719, 153);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Exception";
-            // 
-            // radioButtonEarly914
-            // 
-            this.radioButtonEarly914.AutoSize = true;
-            this.radioButtonEarly914.Location = new System.Drawing.Point(481, 41);
-            this.radioButtonEarly914.Name = "radioButtonEarly914";
-            this.radioButtonEarly914.Size = new System.Drawing.Size(208, 32);
-            this.radioButtonEarly914.TabIndex = 1;
-            this.radioButtonEarly914.Text = "Early 9h - 14h (30%)";
-            this.radioButtonEarly914.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonEarly59
-            // 
-            this.radioButtonEarly59.AutoSize = true;
-            this.radioButtonEarly59.Location = new System.Drawing.Point(208, 41);
-            this.radioButtonEarly59.Name = "radioButtonEarly59";
-            this.radioButtonEarly59.Size = new System.Drawing.Size(197, 32);
-            this.radioButtonEarly59.TabIndex = 1;
-            this.radioButtonEarly59.Text = "Early 5h - 9h (50%)";
-            this.radioButtonEarly59.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonNone
-            // 
-            this.radioButtonNone.AutoSize = true;
-            this.radioButtonNone.Checked = true;
-            this.radioButtonNone.Location = new System.Drawing.Point(33, 41);
-            this.radioButtonNone.Name = "radioButtonNone";
-            this.radioButtonNone.Size = new System.Drawing.Size(81, 32);
-            this.radioButtonNone.TabIndex = 0;
-            this.radioButtonNone.TabStop = true;
-            this.radioButtonNone.Text = "None";
-            this.radioButtonNone.UseVisualStyleBackColor = true;
-            // 
             // labelTotalRoom
             // 
             this.labelTotalRoom.AutoSize = true;
-            this.labelTotalRoom.Location = new System.Drawing.Point(185, 356);
+            this.labelTotalRoom.Location = new System.Drawing.Point(185, 303);
             this.labelTotalRoom.Name = "labelTotalRoom";
             this.labelTotalRoom.Size = new System.Drawing.Size(132, 28);
             this.labelTotalRoom.TabIndex = 0;
@@ -183,7 +127,7 @@
             // labelTotalCapacity
             // 
             this.labelTotalCapacity.AutoSize = true;
-            this.labelTotalCapacity.Location = new System.Drawing.Point(185, 695);
+            this.labelTotalCapacity.Location = new System.Drawing.Point(176, 624);
             this.labelTotalCapacity.Name = "labelTotalCapacity";
             this.labelTotalCapacity.Size = new System.Drawing.Size(156, 28);
             this.labelTotalCapacity.TabIndex = 0;
@@ -240,20 +184,20 @@
             this.dgvRoomAvailable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvRoomAvailable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRoomAvailable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRoomAvailable.Location = new System.Drawing.Point(182, 387);
+            this.dgvRoomAvailable.Location = new System.Drawing.Point(182, 334);
             this.dgvRoomAvailable.Name = "dgvRoomAvailable";
             this.dgvRoomAvailable.ReadOnly = true;
             this.dgvRoomAvailable.RowHeadersWidth = 80;
             this.dgvRoomAvailable.RowTemplate.Height = 24;
-            this.dgvRoomAvailable.Size = new System.Drawing.Size(1050, 305);
+            this.dgvRoomAvailable.Size = new System.Drawing.Size(1050, 287);
             this.dgvRoomAvailable.TabIndex = 6;
             this.dgvRoomAvailable.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvRoomAvailable_RowHeaderMouseClick);
             // 
             // btnBookRoom
             // 
-            this.btnBookRoom.Location = new System.Drawing.Point(671, 733);
+            this.btnBookRoom.Location = new System.Drawing.Point(686, 693);
             this.btnBookRoom.Name = "btnBookRoom";
-            this.btnBookRoom.Size = new System.Drawing.Size(209, 58);
+            this.btnBookRoom.Size = new System.Drawing.Size(209, 69);
             this.btnBookRoom.TabIndex = 7;
             this.btnBookRoom.Text = "Next";
             this.btnBookRoom.UseVisualStyleBackColor = true;
@@ -261,7 +205,7 @@
             // 
             // btnSearchRoom
             // 
-            this.btnSearchRoom.Location = new System.Drawing.Point(933, 225);
+            this.btnSearchRoom.Location = new System.Drawing.Point(634, 225);
             this.btnSearchRoom.Name = "btnSearchRoom";
             this.btnSearchRoom.Size = new System.Drawing.Size(291, 69);
             this.btnSearchRoom.TabIndex = 8;
@@ -309,15 +253,6 @@
             this.panelInformationCustomer.Name = "panelInformationCustomer";
             this.panelInformationCustomer.Size = new System.Drawing.Size(1430, 818);
             this.panelInformationCustomer.TabIndex = 0;
-            // 
-            // dateTimePickerBirthday
-            // 
-            this.dateTimePickerBirthday.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePickerBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerBirthday.Location = new System.Drawing.Point(977, 87);
-            this.dateTimePickerBirthday.Name = "dateTimePickerBirthday";
-            this.dateTimePickerBirthday.Size = new System.Drawing.Size(270, 34);
-            this.dateTimePickerBirthday.TabIndex = 15;
             // 
             // dgvServiceAvailable
             // 
@@ -679,9 +614,7 @@
             this.panelPayment.Controls.Add(this.labelTotalAddition);
             this.panelPayment.Controls.Add(this.labelTotalReservation);
             this.panelPayment.Controls.Add(this.label13);
-            this.panelPayment.Controls.Add(this.labelPhoneNumber);
             this.panelPayment.Controls.Add(this.labelNameCustomer);
-            this.panelPayment.Controls.Add(this.labelFeeEarly);
             this.panelPayment.Controls.Add(this.label5);
             this.panelPayment.Controls.Add(this.labelTotalPrice);
             this.panelPayment.Controls.Add(this.label10);
@@ -792,7 +725,7 @@
             // labelDeposit
             // 
             this.labelDeposit.AutoSize = true;
-            this.labelDeposit.Location = new System.Drawing.Point(993, 570);
+            this.labelDeposit.Location = new System.Drawing.Point(878, 636);
             this.labelDeposit.Name = "labelDeposit";
             this.labelDeposit.Size = new System.Drawing.Size(23, 28);
             this.labelDeposit.TabIndex = 9;
@@ -861,16 +794,6 @@
             this.label13.TabIndex = 12;
             this.label13.Text = "Reservations :";
             // 
-            // labelPhoneNumber
-            // 
-            this.labelPhoneNumber.AutoSize = true;
-            this.labelPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPhoneNumber.Location = new System.Drawing.Point(758, 85);
-            this.labelPhoneNumber.Name = "labelPhoneNumber";
-            this.labelPhoneNumber.Size = new System.Drawing.Size(208, 38);
-            this.labelPhoneNumber.TabIndex = 13;
-            this.labelPhoneNumber.Text = "PhoneNumber";
-            // 
             // labelNameCustomer
             // 
             this.labelNameCustomer.AutoSize = true;
@@ -881,19 +804,10 @@
             this.labelNameCustomer.TabIndex = 13;
             this.labelNameCustomer.Text = "ho ten";
             // 
-            // labelFeeEarly
-            // 
-            this.labelFeeEarly.AutoSize = true;
-            this.labelFeeEarly.Location = new System.Drawing.Point(66, 634);
-            this.labelFeeEarly.Name = "labelFeeEarly";
-            this.labelFeeEarly.Size = new System.Drawing.Size(114, 28);
-            this.labelFeeEarly.TabIndex = 14;
-            this.labelFeeEarly.Text = "Fee early : 0";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(760, 633);
+            this.label5.Location = new System.Drawing.Point(66, 635);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(116, 28);
             this.label5.TabIndex = 14;
@@ -902,7 +816,7 @@
             // labelTotalPrice
             // 
             this.labelTotalPrice.AutoSize = true;
-            this.labelTotalPrice.Location = new System.Drawing.Point(882, 634);
+            this.labelTotalPrice.Location = new System.Drawing.Point(188, 636);
             this.labelTotalPrice.Name = "labelTotalPrice";
             this.labelTotalPrice.Size = new System.Drawing.Size(23, 28);
             this.labelTotalPrice.TabIndex = 15;
@@ -928,38 +842,28 @@
             this.labelCCCDCustomer.TabIndex = 17;
             this.labelCCCDCustomer.Text = "cccd";
             // 
-            // label16
+            // dateTimePickerBirthday
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(33, 103);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(123, 28);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Late (hours) :";
-            // 
-            // cbbLate
-            // 
-            this.cbbLate.FormattingEnabled = true;
-            this.cbbLate.Location = new System.Drawing.Point(208, 103);
-            this.cbbLate.Name = "cbbLate";
-            this.cbbLate.Size = new System.Drawing.Size(197, 36);
-            this.cbbLate.TabIndex = 3;
+            this.dateTimePickerBirthday.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePickerBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerBirthday.Location = new System.Drawing.Point(977, 87);
+            this.dateTimePickerBirthday.Name = "dateTimePickerBirthday";
+            this.dateTimePickerBirthday.Size = new System.Drawing.Size(270, 34);
+            this.dateTimePickerBirthday.TabIndex = 15;
             // 
             // ucBookRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panelPayment);
             this.Controls.Add(this.panelInformationCustomer);
             this.Controls.Add(this.panelBookRoom);
+            this.Controls.Add(this.panelPayment);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ucBookRoom";
             this.Size = new System.Drawing.Size(1430, 818);
             this.panelBookRoom.ResumeLayout(false);
             this.panelBookRoom.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoomAvailable)).EndInit();
             this.panelInformationCustomer.ResumeLayout(false);
             this.panelInformationCustomer.PerformLayout();
@@ -1028,13 +932,5 @@
         private System.Windows.Forms.Label labelTotalAddition;
         private System.Windows.Forms.Label labelTotalReservation;
         private System.Windows.Forms.DateTimePicker dateTimePickerBirthday;
-        private System.Windows.Forms.Label labelPhoneNumber;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButtonEarly914;
-        private System.Windows.Forms.RadioButton radioButtonEarly59;
-        private System.Windows.Forms.RadioButton radioButtonNone;
-        private System.Windows.Forms.Label labelFeeEarly;
-        private System.Windows.Forms.ComboBox cbbLate;
-        private System.Windows.Forms.Label label16;
     }
 }

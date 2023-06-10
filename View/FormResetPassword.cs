@@ -1,12 +1,19 @@
 ﻿using PBL.BLL;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PBL.View
 {
     public partial class FormResetPassword : Form
     {
-        const int TIME_TO_RESEND = 30;
+        const int TIME_TO_RESEND = 5;
         int timeToResend = TIME_TO_RESEND;
         string code;
         public FormResetPassword()
@@ -18,14 +25,14 @@ namespace PBL.View
         {
             if (!int.TryParse(txtCCCD.Text, out int cccd))
             {
-                MessageBox.Show("CCCD must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             AccountBLL accountBLL = new AccountBLL();
             code = accountBLL.CheckInfoAndSendCode(cccd, dateTimePickerBirthday.Value, txtName.Text, txtPhoneNumber.Text, txtEmail.Text);
             if(code == null)
             {
-                MessageBox.Show("Wrong information and send code to email failed", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             panelDetail.BringToFront();
@@ -58,7 +65,7 @@ namespace PBL.View
             code = accountBLL.CheckInfoAndSendCode(Convert.ToInt32(txtCCCD.Text), dateTimePickerBirthday.Value, txtName.Text, txtPhoneNumber.Text, txtEmail.Text);
             if (code == null)
             {
-                MessageBox.Show("Wrong information and send code to email failed", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             timer1.Start();
@@ -73,12 +80,12 @@ namespace PBL.View
                 AccountBLL accountBLL = new AccountBLL();
                 if(accountBLL.ResetPassword(Convert.ToInt32(txtCCCD.Text)))
                 {
-                    MessageBox.Show("Password is reseted same cccd", "SUCCESS", 0, MessageBoxIcon.Information);
+                    MessageBox.Show("Password is reseted same cccd");
                     Dispose();
                     return;
                 }
             }
-            MessageBox.Show("Wrong code", "ERROR", 0, MessageBoxIcon.Error);
+            MessageBox.Show("ERROR");
         }
     }
 }

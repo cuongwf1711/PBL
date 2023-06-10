@@ -34,7 +34,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("RoleId must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
 
@@ -50,7 +50,7 @@ namespace PBL.View
                 RoleBLL roleBLL = new RoleBLL();
                 if (!roleBLL.Delete(ids.ToArray()))
                 {
-                    MessageBox.Show("Delete failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
                 RefreshPanelGeneral(roleBLL);
@@ -113,7 +113,7 @@ namespace PBL.View
             {
                 if (!roleBLL.Create(role))
                 {
-                    MessageBox.Show("Wrong information and create customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }
@@ -121,7 +121,7 @@ namespace PBL.View
             {
                 if (!roleBLL.Update(role))
                 {
-                    MessageBox.Show("Wrong information and update customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }

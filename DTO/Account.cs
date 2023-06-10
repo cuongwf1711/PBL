@@ -10,7 +10,6 @@ namespace PBL.DTO
         public string Email { get; set; }
         [StringLength(64), Required]
         public string Password { get; set; }
-        public bool Active { get; set; }
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
 

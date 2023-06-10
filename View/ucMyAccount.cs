@@ -30,7 +30,7 @@ namespace PBL.View
             txtEmail.Text = account.Email;
             dateTimePickerBirthday.Text = account.Birthday.ToString();
             txtPhoneNumber.Text = account.PhoneNumber;
-            txtRole.Text = accountBLL.GetNameRole(AccountId);
+            txtRoleId.Text = account.RoleId.ToString();
             dgvPayments.DataSource = StaticFunc.ToDataTable(accountBLL.GetPayments(account.PersonId));
             dgvPayments.Columns["PersonId"].Visible = false;
             labelTotal.Text = $"Total : {dgvPayments.Rows.Count}";
@@ -54,7 +54,7 @@ namespace PBL.View
             account.PhoneNumber = txtPhoneNumber.Text;
             if (!accountBLL.Update(account))
             {
-                MessageBox.Show("Wrong information and update customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             btnWelcome.BringToFront();
@@ -70,7 +70,7 @@ namespace PBL.View
             AccountBLL accountBLL = new AccountBLL();
             if (!accountBLL.ChangePassword(AccountId, txtOldPass.Text, txtNewPass.Text, txtNewPassAgain.Text))
             {
-                MessageBox.Show("Wrong information and change password failed", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             panelGeneral.BringToFront();
@@ -83,7 +83,7 @@ namespace PBL.View
             btnConfirmEmail.Enabled = false;
             panelChangeEmail.BringToFront();
         }
-        const int TIME_TO_RESEND = 10;
+        const int TIME_TO_RESEND = 5;
         int timeToResend = TIME_TO_RESEND;
         string code;
         private void BtnSendCode_Click(object sender, EventArgs e)
@@ -94,11 +94,6 @@ namespace PBL.View
                 timer1.Start();
                 btnSendCode.Enabled = false;
                 btnConfirmEmail.Enabled = true;
-            }
-            else
-            {
-                btnConfirmEmail.Enabled = true;
-                MessageBox.Show("Invalid email", "ERROR", 0, MessageBoxIcon.Error);
             }
         }
 
@@ -111,7 +106,7 @@ namespace PBL.View
                 account.Email = txtNewEmail.Text;
                 if (!accountBLL.Update(account))
                 {
-                    MessageBox.Show("Wrong information and update customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
                 txtEmail.Text = txtNewEmail.Text;

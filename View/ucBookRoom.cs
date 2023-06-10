@@ -13,62 +13,28 @@ namespace PBL.View
         public ucBookRoom()
         {
             InitializeComponent();
-            Create();
-        }
-        void Create()
-        {
             panelBookRoom.BringToFront();
-            dateTimePickerStart.MinDate = DateTime.Now.Date;
+            dateTimePickerStart.MinDate = DateTime.Now;
             dateTimePickerEnd.MinDate = dateTimePickerStart.Value.AddDays(1);
-
-            cbbLate.Items?.Clear();
-            cbbLate.Items.Add("None");
-            LateBLL lateBLL = new LateBLL();
-            foreach(Late late in lateBLL.GetAll())
-            {
-                int maximum = late.Maximum;
-                if(maximum > 0 && maximum < 24)
-                {
-                    cbbLate.Items.Add(maximum - 2);
-                }
-            }
-            cbbLate.SelectedIndex = 0;
         }
+
         private void DateTimePickerStart_ValueChanged(object sender, EventArgs e)
         {
-            dateTimePickerEnd.MinDate = dateTimePickerStart.Value.Date.AddDays(1);
+            dateTimePickerEnd.MinDate = dateTimePickerStart.Value.AddDays(1);
         }
 
         private void BtnSearchRoom_Click(object sender, EventArgs e)
         {
             if (int.TryParse(txtQuantityCustomer.Text, out int quantity))
             {
-                if(!radioButtonNone.Checked && cbbLate.SelectedIndex != 0)
-                {
-                    MessageBox.Show("Maximum one exception selected (early or late or nothing)", "ERROR", 0, MessageBoxIcon.Error);
-                    return;
-                }
-                dateTimePickerStart.Value = dateTimePickerStart.Value.Date.AddHours(14);
-                dateTimePickerEnd.Value = dateTimePickerEnd.Value.Date.AddHours(12);
-                if(radioButtonEarly59.Checked)
-                {
-                    dateTimePickerStart.Value = dateTimePickerStart.Value.Date.AddHours(5);
-                }
-                else if (radioButtonEarly914.Checked)
-                {
-                    dateTimePickerStart.Value = dateTimePickerStart.Value.Date.AddHours(9);
-                }
-                else if (cbbLate.SelectedIndex != 0)
-                {
-                    dateTimePickerStart.Value = dateTimePickerStart.Value.AddHours(Convert.ToInt32(cbbLate.SelectedItem));
-                }
                 RoomBLL bll = new RoomBLL();
-                dgvRoomAvailable.DataSource = StaticFunc.ToDataTable(bll.GetRoomsAvailable(dateTimePickerStart.Value, dateTimePickerEnd.Value, quantity));
+                dgvRoomAvailable.DataSource = StaticFunc.ToDataTable(bll.GetRoomsAvailable(dateTimePickerStart.Value.Date.AddHours(14)
+                    , dateTimePickerEnd.Value.Date.AddHours(12), quantity));
                 labelTotalRoom.Text = $"Total room : {dgvRoomAvailable.Rows.Count}";
             }
             else
             {
-                MessageBox.Show("Quantity must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
 
@@ -117,12 +83,12 @@ namespace PBL.View
                 }
                 else
                 {
-                    MessageBox.Show("Not found", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                 }
             }
             else
             {
-                MessageBox.Show("CCCD must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
 
@@ -133,7 +99,7 @@ namespace PBL.View
         {
             if (dgvServiceAvailable.SelectedRows.Count == 0 && dgvRoomAvailable.SelectedRows.Count == 0)
             {
-                MessageBox.Show("You haven't selected whatever yet", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
 
@@ -141,10 +107,10 @@ namespace PBL.View
             {
                 foreach (DataGridViewRow r in dgvServiceAvailable.SelectedRows)
                 {
-                    bool check = int.TryParse(r.Cells["Quantity"].Value?.ToString(), out int quantity);
+                    bool check = int.TryParse(r.Cells["Quantity"].Value.ToString(), out int quantity);
                     if (!check || quantity > 100 || quantity < 1)
                     {
-                        MessageBox.Show("Quantity must be numberic (1-100)", "ERROR", 0, MessageBoxIcon.Error);
+                        MessageBox.Show("ERROR");
                         return;
                     }
                 }
@@ -152,7 +118,7 @@ namespace PBL.View
 
             if (!int.TryParse(txtCCCD.Text, out int cccd))
             {
-                MessageBox.Show("CCCD must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
 
@@ -162,11 +128,11 @@ namespace PBL.View
                 PersonId = cccd,
                 Birthday = dateTimePickerBirthday.Value,
                 Name = txtName.Text,
-                Country = cbbCountry.SelectedItem?.ToString(),
+                Country = cbbCountry.SelectedItem.ToString(),
                 PhoneNumber = txtPhoneNumberCustomer.Text
             }))
             {
-                MessageBox.Show("Invalid information customer", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
 
@@ -178,8 +144,8 @@ namespace PBL.View
                 priceReservations += price;
                 reservations.Add(new Reservation
                 {
-                    DateStart = dateTimePickerStart.Value,
-                    DateEnd = dateTimePickerEnd.Value,
+                    DateStart = dateTimePickerStart.Value.Date.AddHours(14),
+                    DateEnd = dateTimePickerEnd.Value.Date.AddHours(12),
                     Price = price,
                     RoomId = Convert.ToInt32(r.Cells["RoomId"].Value),
                     PersonId = cccd,
@@ -206,7 +172,6 @@ namespace PBL.View
             CreatePanelPayment();
             panelPayment.BringToFront();
         }
-
         void CreatePanelPayment()
         {
             cbbDeposit.SelectedIndex = 0;
@@ -214,7 +179,6 @@ namespace PBL.View
             labelVoucher.Text = string.Empty;
             labelCCCDCustomer.Text = txtCCCD.Text;
             labelNameCustomer.Text = txtName.Text;
-            labelPhoneNumber.Text = txtPhoneNumberCustomer.Text;
             dgvListRooms.Columns?.Clear();
             dgvListServices.Columns?.Clear();
             if (dgvRoomAvailable.SelectedRows.Count > 0)
@@ -232,24 +196,7 @@ namespace PBL.View
                 dgvListServices.Columns["PaymentId"].Visible = false;
                 labelTotalAddition.Text = $"Total : {dgvListServices.Rows.Count}";
             }
-
-            decimal feeEarly;
-            if (radioButtonEarly59.Checked)
-            {
-                feeEarly = 0.5m;
-                labelFeeEarly.Text = radioButtonEarly59.Text;
-            }
-            else if (radioButtonEarly914.Checked)
-            {
-                feeEarly = 0.3m;
-                labelFeeEarly.Text = radioButtonEarly914.Text;
-            }
-            else
-            {
-                feeEarly = 0;
-                labelFeeEarly.Text = string.Empty;
-            }
-            labelTotalPrice.Text = (Convert.ToDecimal(labelPriceReservations.Text) * (1 + feeEarly) + Convert.ToDecimal(labelPriceServices.Text)).ToString();
+            labelTotalPrice.Text = (Convert.ToDecimal(labelPriceReservations.Text) + Convert.ToDecimal(labelPriceServices.Text)).ToString();
         }
         private void BtnOkVoucher_Click(object sender, EventArgs e)
         {
@@ -257,22 +204,13 @@ namespace PBL.View
             voucher = voucherBLL.GetByCode(txtVoucher.Text);
             if (voucher != null)
             {
-                decimal feeEarly = 0;
-                if (radioButtonEarly59.Checked)
-                {
-                    feeEarly = 0.5m;
-                }
-                else if (radioButtonEarly914.Checked)
-                {
-                    feeEarly = 0.3m;
-                }
                 labelVoucher.Text = voucher.Discount.ToString("p");
-                labelTotalPrice.Text = ((Convert.ToDecimal(labelPriceReservations.Text) * (1 + feeEarly) + Convert.ToDecimal(labelPriceServices.Text)) * (1 - voucher.Discount)).ToString();
+                labelTotalPrice.Text = ((Convert.ToDecimal(labelPriceReservations.Text) + Convert.ToDecimal(labelPriceServices.Text)) * (1 - voucher.Discount)).ToString();
                 labelDeposit.Text = (Convert.ToDecimal(labelTotalPrice.Text) * Convert.ToDecimal(cbbDeposit.SelectedItem)).ToString();
             }
             else
             {
-                MessageBox.Show("Invalid voucher", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
 
@@ -297,29 +235,17 @@ namespace PBL.View
             dgvRoomAvailable.Columns?.Clear();
             labelTotalRoom.Text = "Total room : 0";
             labelTotalCapacity.Text = "Total capacity : 0";
-            radioButtonNone.Checked = true;
-            cbbLate.SelectedIndex = 0;
         }
         private void BtnOkPayment_Click(object sender, EventArgs e)
         {
-            decimal feeEarly = 0;
-            if (radioButtonEarly59.Checked)
-            {
-                feeEarly = 0.5m;
-            }
-            else if (radioButtonEarly914.Checked)
-            {
-                feeEarly = 0.3m;
-            }
             PaymentBLL paymentBLL = new PaymentBLL();
             if(!paymentBLL.BookRoomCompleted(new Payment 
                 { DateCreate = DateTime.Now, PersonId = AccountId
                 , Deposit = Convert.ToDecimal(cbbDeposit.SelectedItem)
-                , VoucherId = voucher?.VoucherId, FeeEarly = feeEarly
-                }
+                , VoucherId = voucher?.VoucherId}
             , reservations, additions))
             {
-                MessageBox.Show("Wrong information and create payment failed", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             ClearPanelBookRoom();

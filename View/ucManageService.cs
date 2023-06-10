@@ -2,6 +2,8 @@
 using PBL.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PBL.View
@@ -36,7 +38,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("ServiceId must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
         
@@ -52,7 +54,7 @@ namespace PBL.View
                 ServiceBLL serviceBLL = new ServiceBLL();
                 if (!serviceBLL.Delete(ids.ToArray()))
                 {
-                    MessageBox.Show("Delete failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
                 RefreshPanelGeneral(serviceBLL);
@@ -100,7 +102,7 @@ namespace PBL.View
                 {
                     if (!serviceBLL.Create(new Service { Name = txtName.Text, Price = price }))
                     {
-                        MessageBox.Show("Wrong information and create customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                        MessageBox.Show("ERROR");
                         return;
                     }
                 }
@@ -108,7 +110,7 @@ namespace PBL.View
                 {
                     if (!serviceBLL.Update(new Service { ServiceId = upd, Name = txtName.Text, Price = price }))
                     {
-                        MessageBox.Show("Wrong information and update customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                        MessageBox.Show("ERROR");
                         return;
                     }
                 }
@@ -117,7 +119,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("Price must be decimal", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
     }

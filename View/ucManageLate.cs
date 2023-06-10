@@ -40,7 +40,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("LateId must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace PBL.View
                 LateBLL lateBLL = new LateBLL();
                 if (!lateBLL.Delete(ids.ToArray()))
                 {
-                    MessageBox.Show("Delete failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
                 RefreshPanelGeneral(lateBLL);
@@ -79,7 +79,6 @@ namespace PBL.View
                 Late late = lateBLL.Get(upd);
                 txtName.Text = late.Name;
                 txtFeeLate.Text = late.FeeLate.ToString();
-                txtMaximum.Text = late.Maximum.ToString();
                 panelDetail.BringToFront();
             }
         }
@@ -91,25 +90,25 @@ namespace PBL.View
 
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
-            if(!decimal.TryParse(txtFeeLate.Text, out decimal feeLate) || !int.TryParse(txtMaximum.Text, out int maximum))
+            if(!decimal.TryParse(txtFeeLate.Text, out decimal feeLate))
             {
-                MessageBox.Show("FeeLate and Maximum must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             LateBLL lateBLL = new LateBLL();
             if (upd == -1)
             {
-                if (!lateBLL.Create(new Late { Name = txtName.Text, Maximum = maximum, FeeLate = feeLate }))
+                if (!lateBLL.Create(new Late { Name = txtName.Text, FeeLate = feeLate }))
                 {
-                    MessageBox.Show("Wrong information and create customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }
             else
             {
-                if (!lateBLL.Update(new Late { LateId = upd, Name = txtName.Text, Maximum = maximum, FeeLate = feeLate }))
+                if (!lateBLL.Update(new Late { LateId = upd, Name = txtName.Text, FeeLate = feeLate }))
                 {
-                    MessageBox.Show("Wrong information and update customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }

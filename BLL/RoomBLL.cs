@@ -8,7 +8,7 @@ using System.Security.Principal;
 
 namespace PBL.BLL
 {
-    public class RoomBLL
+    public class RoomBLL : ICrudBLL<Room>
     {
         public bool Create(params Room[] rooms)
         {

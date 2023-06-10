@@ -57,7 +57,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("RoomId must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
         
@@ -73,7 +73,7 @@ namespace PBL.View
                 RoomBLL roomBLL = new RoomBLL();
                 if (!roomBLL.Delete(ids.ToArray()))
                 {
-                    MessageBox.Show("Delete failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
                 RefreshPanelGeneral(roomBLL);
@@ -128,7 +128,7 @@ namespace PBL.View
                 {
                     if (!roomBLL.Create(room))
                     {
-                        MessageBox.Show("Wrong information and create customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                        MessageBox.Show("ERROR");
                         return;
                     }
                 }
@@ -136,7 +136,7 @@ namespace PBL.View
                 {
                     if (!roomBLL.Update(room))
                     {
-                        MessageBox.Show("Wrong information and update customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                        MessageBox.Show("ERROR");
                         return;
                     }
                 }
@@ -145,7 +145,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("Wrong information", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
 

@@ -47,7 +47,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("CCCD must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
 
@@ -63,7 +63,7 @@ namespace PBL.View
                 CustomerBLL customerBLL = new CustomerBLL();
                 if (!customerBLL.Delete(ids.ToArray()))
                 {
-                    MessageBox.Show("Delete failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
                 RefreshPanelGeneral(customerBLL);
@@ -113,7 +113,7 @@ namespace PBL.View
         {
             if (!int.TryParse(txtCCCD.Text, out int customerId))
             {
-                MessageBox.Show("CCCD must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             Customer customer = new Customer
@@ -129,7 +129,7 @@ namespace PBL.View
             {
                 if (!customerBLL.Create(customer))
                 {
-                    MessageBox.Show("Wrong information and create customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }
@@ -137,7 +137,7 @@ namespace PBL.View
             {
                 if (!customerBLL.Update(customer))
                 {
-                    MessageBox.Show("Wrong information and update customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }

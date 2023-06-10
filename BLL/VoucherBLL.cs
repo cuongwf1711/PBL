@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PBL.BLL
 {
-    public class VoucherBLL
+    public class VoucherBLL : ICrudBLL<Voucher>
     {
         public bool Create(params Voucher[] vouchers)
         {

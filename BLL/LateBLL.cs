@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PBL.BLL
 {
-    public class LateBLL
+    public class LateBLL : ICrudBLL<Late>
     {
         public bool Create(params Late[] lates)
         {

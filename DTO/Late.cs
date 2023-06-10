@@ -13,8 +13,6 @@ namespace PBL.DTO
         public int LateId { get; set; }
         [Index(IsUnique = true), StringLength(50), Required]
         public string Name { get; set; }
-        [Range(0, 24)]
-        public int Maximum { get; set; }
         [Range(0, 1)]
         public decimal FeeLate { get; set; }
     }

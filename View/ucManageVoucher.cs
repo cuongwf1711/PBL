@@ -43,7 +43,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("VoucherId must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
         void RefreshPanelGeneral(VoucherBLL voucherBLL)
@@ -63,7 +63,7 @@ namespace PBL.View
                 VoucherBLL voucherBLL = new VoucherBLL();
                 if (!voucherBLL.Delete(ids.ToArray()))
                 {
-                    MessageBox.Show("Delete failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
                 RefreshPanelGeneral(voucherBLL);
@@ -106,7 +106,7 @@ namespace PBL.View
         {
             if (!decimal.TryParse(txtDiscount.Text, out decimal discount) || !int.TryParse(txtQuantity.Text, out int quantity))
             {
-                MessageBox.Show("Wrong format discount anf quantity", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             VoucherBLL voucherBLL = new VoucherBLL();
@@ -114,7 +114,7 @@ namespace PBL.View
             {
                 if (!voucherBLL.Create(new Voucher { Code = txtCode.Text, Discount = discount, Quantity = quantity }))
                 {
-                    MessageBox.Show("Wrong information and create customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }
@@ -122,7 +122,7 @@ namespace PBL.View
             {
                 if (!voucherBLL.Update(new Voucher { VoucherId = upd, Code = txtCode.Text, Discount = discount, Quantity = quantity }))
                 {
-                    MessageBox.Show("Wrong information and update customer failed", "ERROR", 0, MessageBoxIcon.Error); ;
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }

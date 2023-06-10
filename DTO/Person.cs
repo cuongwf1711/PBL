@@ -8,9 +8,9 @@ namespace PBL.DTO
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PersonId { get; set; }
-        [Index(IsUnique = true), StringLength(10), RegularExpression(@"^[0-9]{10}$"), Required]
+        [Index(IsUnique = true), StringLength(10), RegularExpression(@"^[0-9]{10}$")]
         public string PhoneNumber { get; set; }
-        [StringLength(100), RegularExpression(@"^[a-zA-Z\s]+$"), Required]
+        [StringLength(100), RegularExpression(@"^[a-zA-Z\s]+$")]
         public string Name { get; set; }
         [CheckBirthday, Column(TypeName = "Date")]
         public DateTime Birthday { get; set; }

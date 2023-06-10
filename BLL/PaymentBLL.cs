@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Security.Principal;
-using System.Windows.Forms;
 using static PBL.DTO.HMSDB;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace PBL.BLL
 {
-    public class PaymentBLL
+    public class PaymentBLL : ICrudBLL<Payment>
     {
         public bool Create(params Payment[] payments)
         {
@@ -88,48 +87,11 @@ namespace PBL.BLL
         }
 
         //
-        public List<Late> GetLates(int id)
-        {
-            using (HMSDB Db = new HMSDB())
-            {
-                foreach (Reservation reservationOfPayment in Db.Payments.Find(id).Reservations)
-                {
-                    if(Db.Reservations.Where(p => p.RoomId == reservationOfPayment.RoomId && DbFunctions.TruncateTime(p.DateStart) == reservationOfPayment.DateEnd.Date).Count() != 0)
-                    {
-                        return new List<Late>();
-                    }
-                }
-                return Db.Lates.AsNoTracking().ToList();
-            }
-        }
-        public bool AddLate(int id, decimal feeLate, int hour)
-        {
-            using (HMSDB Db = new HMSDB())
-            {
-                Payment payment = Db.Payments.Find(id);
-                payment.FeeLate = feeLate;
-                Db.Entry(payment).State = EntityState.Modified;
-                foreach (int i in payment.Reservations.Select(p => p.ReservationId))
-                {
-                    Reservation reservation = Db.Reservations.Find(i);
-                    reservation.DateEnd = reservation.DateEnd.Date.AddHours(12 + hour);
-                }
-                Db.SaveChanges();
-                return true;
-            }
-        }
         public int GetCustomerId(int id)
         {
             using (HMSDB Db = new HMSDB())
             {
                 return Db.Payments.Find(id).Reservations.FirstOrDefault().PersonId;
-            }
-        }
-        public string GetPhoneNumberCustomer(int id)
-        {
-            using (HMSDB Db = new HMSDB())
-            {
-                return Db.Payments.Find(id).Reservations.FirstOrDefault().Customer.PhoneNumber;
             }
         }
         public List<Payment> GetOld()
@@ -154,7 +116,6 @@ namespace PBL.BLL
                 return Db.Payments.AsNoTracking().Where(p => DbFunctions.TruncateTime(p.DateCreate) >= start.Date && DbFunctions.TruncateTime(p.DateCreate) <= end.Date).ToList(); 
             }
         }
-
         public List<Payment> GetByDateCheckout(DateTime start, DateTime end)
         {
             using (HMSDB Db = new HMSDB())
@@ -162,7 +123,6 @@ namespace PBL.BLL
                 return Db.Payments.AsNoTracking().Where(p => DbFunctions.TruncateTime(p.DateCheckout) >= start.Date && DbFunctions.TruncateTime(p.DateCheckout) <= end.Date).ToList();
             }
         }
-
         public decimal GetPriceReservations(int id)
         {
             using (HMSDB Db = new HMSDB())
@@ -170,18 +130,9 @@ namespace PBL.BLL
                 return Db.Payments.Find(id).Reservations.Sum(p => p.Price); 
             }
         }
-
-        public decimal GetPriceServices(int id)
-        {
-            using (HMSDB Db = new HMSDB())
-            {
-                return Db.Payments.Find(id).Additions.Sum(p => p.Price);
-            }
-        }
-
         public decimal CalculatePriceNeedPayWhenAddFeeLate(int id, decimal feeLate)
         {
-            return GetPriceApplyVoucher(id) - GetPriceDeposit(id) + GetPriceReservations(id) * feeLate;
+            return GetPriceRemain(id) + GetPriceReservations(id) * feeLate;
         }
 
         public decimal CalculatePriceWhenChangeDeposit(int id, decimal deposit)
@@ -189,11 +140,19 @@ namespace PBL.BLL
             return GetPriceApplyVoucher(id) * deposit;
         }
 
+        public decimal GetPriceServices(int id)
+        {
+            using (HMSDB Db = new HMSDB())
+            {
+                return Db.Payments.Find(id).Additions.Sum(p => p.Price); 
+            }
+        }
+
         public decimal GetPriceApplyVoucher(int id)
         {
             using (HMSDB Db = new HMSDB())
             {
-                return (GetPriceReservations(id) * (1 + Get(id).FeeEarly) + GetPriceServices(id)) * (1 - (Db.Payments.Find(id).Voucher?.Discount ?? 0)); 
+                return (GetPriceReservations(id) + GetPriceServices(id)) * (1 - (Db.Payments.Find(id).Voucher?.Discount ?? 0)); 
             }
         }
         public decimal GetPriceDeposit(int id)
@@ -215,7 +174,7 @@ namespace PBL.BLL
         }
         public decimal GetPriceRemain(int id)
         {
-            return GetPriceTotal(id) - GetPriceDeposit(id);
+            return GetPriceApplyVoucher(id) - GetPriceDeposit(id);
         }
         public List<Reservation> GetReservations(int id)
         {
@@ -238,13 +197,14 @@ namespace PBL.BLL
                 return Db.Payments.Find(id).Voucher;
             }
         }
-        public bool Checkout(int id)
+        public bool Checkout(int id, decimal feeLate)
         {
             try
             {
                 Payment payment = Get(id);
                 payment.Status = true;
                 payment.DateCheckout = DateTime.Now;
+                payment.FeeLate = feeLate;
                 Update(payment);
                 return true;
             }
@@ -261,7 +221,7 @@ namespace PBL.BLL
                 {
                     try
                     {
-                        Create(payment);
+                        Db.Payments.Add(payment);
                         Db.SaveChanges();
 
                         if (reservations != null)

@@ -40,7 +40,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("CCCD must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
 
@@ -56,7 +56,7 @@ namespace PBL.View
                 AccountBLL accountBLL = new AccountBLL();
                 if(!accountBLL.Delete(ids.ToArray()))
                 {
-                    MessageBox.Show("Delete failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
                 RefreshPanelGeneral(accountBLL);
@@ -87,10 +87,10 @@ namespace PBL.View
         void ClearPanelDetail()
         {
             txtCCCD.Text = string.Empty;
-            txtCCCD.ReadOnly = true;
+            txtCCCD.Enabled = true;
             txtName.Text = string.Empty;
             txtEmail.Text = string.Empty;
-            txtEmail.ReadOnly = true;
+            txtEmail.Enabled = true;
             txtPhoneNumber.Text = string.Empty;
             SetCBBRole(-1);
             labelTotalPayment.Text = "Total : 0";
@@ -109,10 +109,10 @@ namespace PBL.View
                 AccountBLL accountBLL = new AccountBLL();
                 Account account = accountBLL.Get(Convert.ToInt32(dgvListEmployees.SelectedRows[0].Cells["PersonId"].Value));
                 txtCCCD.Text = account.PersonId.ToString();
-                txtCCCD.ReadOnly = false;
+                txtCCCD.Enabled = false;
                 txtName.Text = account.Name;
                 txtEmail.Text = account.Email;
-                txtEmail.ReadOnly = false;
+                txtEmail.Enabled = false;
                 dateTimePickerBirthday.Value = account.Birthday;
                 txtPhoneNumber.Text = account.PhoneNumber;
                 SetCBBRole(account.RoleId);
@@ -132,13 +132,13 @@ namespace PBL.View
         {
             if (!int.TryParse(txtCCCD.Text, out int accountId))
             {
-                MessageBox.Show("CCCD must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             string password = StaticFunc.RandomString(10);
             if(!StaticFunc.SendEmail(txtEmail.Text, "Password for new account", password))
             {
-                MessageBox.Show("Wrong information and send email failed", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
                 return;
             }
             Account account = new Account
@@ -152,12 +152,11 @@ namespace PBL.View
                 RoleId = ((CbbItem)cbbRole.SelectedItem).Id,
             };
             AccountBLL accountBLL = new AccountBLL();
-            if (txtCCCD.ReadOnly)
+            if (txtCCCD.Enabled)
             {
-                account.Active = true;
                 if (!accountBLL.Create(account))
                 {
-                    MessageBox.Show("Wrong information and create customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }
@@ -165,7 +164,7 @@ namespace PBL.View
             {
                 if (!accountBLL.Update(account))
                 {
-                    MessageBox.Show("Wrong information and update customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }
@@ -188,7 +187,7 @@ namespace PBL.View
                 {
                     if (!accountBLL.ActivateAccount(ids.ToArray()))
                     {
-                        MessageBox.Show("Activate account failed", "ERROR", 0, MessageBoxIcon.Error);
+                        MessageBox.Show("ERROR");
                         return;
                     }
                 }
@@ -196,7 +195,7 @@ namespace PBL.View
                 {
                     if (!accountBLL.DeactivateAccount(ids.ToArray()))
                     {
-                        MessageBox.Show("Deactivate account failed", "ERROR", 0, MessageBoxIcon.Error);
+                        MessageBox.Show("ERROR");
                         return;
                     }
                 }

@@ -38,7 +38,7 @@
             this.btnChangePass = new System.Windows.Forms.Button();
             this.btnChangeEmail = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtRole = new System.Windows.Forms.TextBox();
+            this.txtRoleId = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -85,7 +85,7 @@
             this.panelGeneral.Controls.Add(this.btnChangePass);
             this.panelGeneral.Controls.Add(this.btnChangeEmail);
             this.panelGeneral.Controls.Add(this.btnSave);
-            this.panelGeneral.Controls.Add(this.txtRole);
+            this.panelGeneral.Controls.Add(this.txtRoleId);
             this.panelGeneral.Controls.Add(this.txtEmail);
             this.panelGeneral.Controls.Add(this.txtPhoneNumber);
             this.panelGeneral.Controls.Add(this.txtName);
@@ -177,23 +177,21 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // txtRole
+            // txtRoleId
             // 
-            this.txtRole.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtRole.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRole.Location = new System.Drawing.Point(287, 561);
-            this.txtRole.Name = "txtRole";
-            this.txtRole.ReadOnly = true;
-            this.txtRole.Size = new System.Drawing.Size(392, 51);
-            this.txtRole.TabIndex = 5;
+            this.txtRoleId.Enabled = false;
+            this.txtRoleId.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRoleId.Location = new System.Drawing.Point(287, 561);
+            this.txtRoleId.Name = "txtRoleId";
+            this.txtRoleId.Size = new System.Drawing.Size(392, 51);
+            this.txtRoleId.TabIndex = 5;
             // 
             // txtEmail
             // 
-            this.txtEmail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(287, 464);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(392, 51);
             this.txtEmail.TabIndex = 6;
             // 
@@ -215,12 +213,10 @@
             // 
             // txtCCCD
             // 
-            this.txtCCCD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtCCCD.Enabled = false;
             this.txtCCCD.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCCCD.Location = new System.Drawing.Point(287, 42);
             this.txtCCCD.Name = "txtCCCD";
-            this.txtCCCD.ReadOnly = true;
             this.txtCCCD.Size = new System.Drawing.Size(392, 51);
             this.txtCCCD.TabIndex = 9;
             // 
@@ -230,9 +226,9 @@
             this.label8.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(34, 567);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 45);
+            this.label8.Size = new System.Drawing.Size(127, 45);
             this.label8.TabIndex = 10;
-            this.label8.Text = "Role :";
+            this.label8.Text = "RoleId :";
             // 
             // label10
             // 
@@ -548,7 +544,7 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnSaveChangePass;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtRole;
+        private System.Windows.Forms.TextBox txtRoleId;
         private System.Windows.Forms.Button btnWelcome;
         private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.DateTimePicker dateTimePickerBirthday;

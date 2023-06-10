@@ -23,7 +23,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("Account no exist", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
 

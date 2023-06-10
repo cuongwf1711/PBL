@@ -6,7 +6,7 @@ using System.Security.Principal;
 
 namespace PBL.BLL
 {
-    public class ServiceBLL
+    public class ServiceBLL : ICrudBLL<Service>
     {
         public bool Create(params Service[] services)
         {

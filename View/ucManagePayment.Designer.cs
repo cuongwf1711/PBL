@@ -38,7 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnNoteLate = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDetail = new System.Windows.Forms.Button();
             this.btnListAll = new System.Windows.Forms.Button();
@@ -61,12 +60,9 @@
             this.checkBoxDeposit = new System.Windows.Forms.CheckBox();
             this.checkBoxStatus = new System.Windows.Forms.CheckBox();
             this.dateTimePickerDateCreate = new System.Windows.Forms.DateTimePicker();
-            this.labelPhoneNumberCustomer = new System.Windows.Forms.Label();
-            this.labelCustomerId = new System.Windows.Forms.Label();
             this.labelAccountId = new System.Windows.Forms.Label();
             this.labelPriceServices = new System.Windows.Forms.Label();
             this.lb4 = new System.Windows.Forms.Label();
-            this.labelFeeEarly = new System.Windows.Forms.Label();
             this.labelTotalAddition = new System.Windows.Forms.Label();
             this.labelTotalReservation = new System.Windows.Forms.Label();
             this.labelPriceReservations = new System.Windows.Forms.Label();
@@ -74,6 +70,7 @@
             this.lb3 = new System.Windows.Forms.Label();
             this.labelDeposit = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.labelCustomerId = new System.Windows.Forms.Label();
             this.panelGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListPayments)).BeginInit();
             this.panelDetail.SuspendLayout();
@@ -95,7 +92,6 @@
             this.panelGeneral.Controls.Add(this.label2);
             this.panelGeneral.Controls.Add(this.txtSearch);
             this.panelGeneral.Controls.Add(this.btnDelete);
-            this.panelGeneral.Controls.Add(this.btnNoteLate);
             this.panelGeneral.Controls.Add(this.btnUpdate);
             this.panelGeneral.Controls.Add(this.btnDetail);
             this.panelGeneral.Controls.Add(this.btnListAll);
@@ -173,34 +169,24 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(208, 88);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(148, 34);
+            this.txtSearch.Size = new System.Drawing.Size(174, 34);
             this.txtSearch.TabIndex = 1;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(1233, 88);
+            this.btnDelete.Location = new System.Drawing.Point(1177, 88);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(95, 53);
+            this.btnDelete.Size = new System.Drawing.Size(151, 53);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
-            // btnNoteLate
-            // 
-            this.btnNoteLate.Location = new System.Drawing.Point(878, 88);
-            this.btnNoteLate.Name = "btnNoteLate";
-            this.btnNoteLate.Size = new System.Drawing.Size(123, 53);
-            this.btnNoteLate.TabIndex = 3;
-            this.btnNoteLate.Text = "Note Late";
-            this.btnNoteLate.UseVisualStyleBackColor = true;
-            this.btnNoteLate.Click += new System.EventHandler(this.BtnNoteLate_Click);
-            // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(1007, 88);
+            this.btnUpdate.Location = new System.Drawing.Point(909, 88);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(126, 53);
+            this.btnUpdate.Size = new System.Drawing.Size(128, 53);
             this.btnUpdate.TabIndex = 3;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -208,9 +194,9 @@
             // 
             // btnDetail
             // 
-            this.btnDetail.Location = new System.Drawing.Point(1139, 88);
+            this.btnDetail.Location = new System.Drawing.Point(1043, 88);
             this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(88, 53);
+            this.btnDetail.Size = new System.Drawing.Size(128, 53);
             this.btnDetail.TabIndex = 4;
             this.btnDetail.Text = "Detail";
             this.btnDetail.UseVisualStyleBackColor = true;
@@ -218,7 +204,7 @@
             // 
             // btnListAll
             // 
-            this.btnListAll.Location = new System.Drawing.Point(496, 88);
+            this.btnListAll.Location = new System.Drawing.Point(527, 88);
             this.btnListAll.Name = "btnListAll";
             this.btnListAll.Size = new System.Drawing.Size(123, 53);
             this.btnListAll.TabIndex = 5;
@@ -228,7 +214,7 @@
             // 
             // btnListNow
             // 
-            this.btnListNow.Location = new System.Drawing.Point(625, 88);
+            this.btnListNow.Location = new System.Drawing.Point(656, 88);
             this.btnListNow.Name = "btnListNow";
             this.btnListNow.Size = new System.Drawing.Size(123, 53);
             this.btnListNow.TabIndex = 5;
@@ -238,7 +224,7 @@
             // 
             // btnListOld
             // 
-            this.btnListOld.Location = new System.Drawing.Point(754, 88);
+            this.btnListOld.Location = new System.Drawing.Point(785, 88);
             this.btnListOld.Name = "btnListOld";
             this.btnListOld.Size = new System.Drawing.Size(118, 53);
             this.btnListOld.TabIndex = 6;
@@ -248,7 +234,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(362, 88);
+            this.btnSearch.Location = new System.Drawing.Point(388, 88);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(128, 53);
             this.btnSearch.TabIndex = 7;
@@ -291,12 +277,10 @@
             this.panelDetail.Controls.Add(this.checkBoxDeposit);
             this.panelDetail.Controls.Add(this.checkBoxStatus);
             this.panelDetail.Controls.Add(this.dateTimePickerDateCreate);
-            this.panelDetail.Controls.Add(this.labelPhoneNumberCustomer);
             this.panelDetail.Controls.Add(this.labelCustomerId);
             this.panelDetail.Controls.Add(this.labelAccountId);
             this.panelDetail.Controls.Add(this.labelPriceServices);
             this.panelDetail.Controls.Add(this.lb4);
-            this.panelDetail.Controls.Add(this.labelFeeEarly);
             this.panelDetail.Controls.Add(this.labelTotalAddition);
             this.panelDetail.Controls.Add(this.labelTotalReservation);
             this.panelDetail.Controls.Add(this.labelPriceReservations);
@@ -447,7 +431,7 @@
             this.checkBoxStatus.AutoSize = true;
             this.checkBoxStatus.Enabled = false;
             this.checkBoxStatus.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxStatus.Location = new System.Drawing.Point(30, 53);
+            this.checkBoxStatus.Location = new System.Drawing.Point(558, 28);
             this.checkBoxStatus.Name = "checkBoxStatus";
             this.checkBoxStatus.Size = new System.Drawing.Size(120, 42);
             this.checkBoxStatus.TabIndex = 8;
@@ -459,36 +443,16 @@
             this.dateTimePickerDateCreate.CustomFormat = "dd/MM/yyyy - HH:mm";
             this.dateTimePickerDateCreate.Enabled = false;
             this.dateTimePickerDateCreate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerDateCreate.Location = new System.Drawing.Point(198, 16);
+            this.dateTimePickerDateCreate.Location = new System.Drawing.Point(207, 32);
             this.dateTimePickerDateCreate.Name = "dateTimePickerDateCreate";
             this.dateTimePickerDateCreate.Size = new System.Drawing.Size(265, 34);
             this.dateTimePickerDateCreate.TabIndex = 9;
-            // 
-            // labelPhoneNumberCustomer
-            // 
-            this.labelPhoneNumberCustomer.AutoSize = true;
-            this.labelPhoneNumberCustomer.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPhoneNumberCustomer.Location = new System.Drawing.Point(739, 53);
-            this.labelPhoneNumberCustomer.Name = "labelPhoneNumberCustomer";
-            this.labelPhoneNumberCustomer.Size = new System.Drawing.Size(394, 38);
-            this.labelPhoneNumberCustomer.TabIndex = 11;
-            this.labelPhoneNumberCustomer.Text = "Phone number of customer : 0";
-            // 
-            // labelCustomerId
-            // 
-            this.labelCustomerId.AutoSize = true;
-            this.labelCustomerId.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCustomerId.Location = new System.Drawing.Point(739, 12);
-            this.labelCustomerId.Name = "labelCustomerId";
-            this.labelCustomerId.Size = new System.Drawing.Size(196, 38);
-            this.labelCustomerId.TabIndex = 11;
-            this.labelCustomerId.Text = "CustomerId : 0";
             // 
             // labelAccountId
             // 
             this.labelAccountId.AutoSize = true;
             this.labelAccountId.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAccountId.Location = new System.Drawing.Point(201, 55);
+            this.labelAccountId.Location = new System.Drawing.Point(739, 30);
             this.labelAccountId.Name = "labelAccountId";
             this.labelAccountId.Size = new System.Drawing.Size(178, 38);
             this.labelAccountId.TabIndex = 11;
@@ -513,16 +477,6 @@
             this.lb4.Size = new System.Drawing.Size(91, 28);
             this.lb4.TabIndex = 13;
             this.lb4.Text = "Services :";
-            // 
-            // labelFeeEarly
-            // 
-            this.labelFeeEarly.AutoSize = true;
-            this.labelFeeEarly.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFeeEarly.Location = new System.Drawing.Point(1209, 677);
-            this.labelFeeEarly.Name = "labelFeeEarly";
-            this.labelFeeEarly.Size = new System.Drawing.Size(114, 28);
-            this.labelFeeEarly.TabIndex = 14;
-            this.labelFeeEarly.Text = "Fee early : 0";
             // 
             // labelTotalAddition
             // 
@@ -588,11 +542,21 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(23, 12);
+            this.label3.Location = new System.Drawing.Point(32, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(169, 38);
             this.label3.TabIndex = 17;
             this.label3.Text = "DateCreate :";
+            // 
+            // labelCustomerId
+            // 
+            this.labelCustomerId.AutoSize = true;
+            this.labelCustomerId.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomerId.Location = new System.Drawing.Point(1078, 28);
+            this.labelCustomerId.Name = "labelCustomerId";
+            this.labelCustomerId.Size = new System.Drawing.Size(196, 38);
+            this.labelCustomerId.TabIndex = 11;
+            this.labelCustomerId.Text = "CustomerId : 0";
             // 
             // ucManagePayment
             // 
@@ -664,8 +628,5 @@
         private System.Windows.Forms.Label labelTotalPriceAllPayment;
         private System.Windows.Forms.Label labelTotalPriceOnePayment;
         private System.Windows.Forms.Label labelCustomerId;
-        private System.Windows.Forms.Label labelPhoneNumberCustomer;
-        private System.Windows.Forms.Label labelFeeEarly;
-        private System.Windows.Forms.Button btnNoteLate;
     }
 }

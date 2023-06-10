@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace PBL.BLL
 {
-    public class CustomerBLL
+    public class CustomerBLL : ICrudBLL<Customer>
     {
         public bool Create(params Customer[] customers)
         {

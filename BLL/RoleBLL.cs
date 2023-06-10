@@ -7,7 +7,7 @@ using static PBL.DTO.HMSDB;
 
 namespace PBL.BLL
 {
-    public class RoleBLL
+    public class RoleBLL : ICrudBLL<Role>
     {
         public bool Create(params Role[] roles)
         {

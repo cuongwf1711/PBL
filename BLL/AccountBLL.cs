@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace PBL.BLL
 {
-    public class AccountBLL
+    public class AccountBLL : ICrudBLL<Account>
     {
         public bool Create(params Account[] accounts)
         {
@@ -90,16 +90,12 @@ namespace PBL.BLL
         }
 
         //
-        public string GetNameRole(int id)
+        public List<Account> GetAllEmployeeExceptMe(int id)
         {
             using (HMSDB Db = new HMSDB())
             {
-                return Db.Accounts.Find(id).Role.Name;
+                return Db.Accounts.AsNoTracking().Where(p => p.RoleId != 1 && p.PersonId != id).ToList();
             }
-        }
-        public List<Account> GetAllEmployeeExceptMe(int id)
-        {
-            return GetAll().Where(p => p.RoleId != 1 && p.PersonId != id).ToList();
         }
         public string GetPermission(int id)
         {
@@ -121,7 +117,7 @@ namespace PBL.BLL
             using (HMSDB Db = new HMSDB())
             {
                 password = StaticFunc.ComputeSha256Hash(password);
-                return Db.Accounts.AsNoTracking().FirstOrDefault(p => p.Email == email && p.Password == password && p.Active); 
+                return Db.Accounts.AsNoTracking().FirstOrDefault(p => p.Email == email && p.Password == password); 
             }
         }
         public bool ActivateAccount(int[] ids)
@@ -133,9 +129,9 @@ namespace PBL.BLL
                     foreach (int id in ids)
                     {
                         Account account = Get(id);
-                        if (!account.Active)
+                        if (account.Email.EndsWith("(deactivate)"))
                         {
-                            account.Active = true;
+                            account.Email = account.Email.Remove(account.Email.IndexOf("(deactivate)"));
                             Db.Entry(account).State = EntityState.Modified;
                         }
                         else
@@ -161,9 +157,9 @@ namespace PBL.BLL
                     foreach (int id in ids)
                     {
                         Account account = Get(id);
-                        if (account.Active)
+                        if (!account.Email.EndsWith("(deactivate)"))
                         {
-                            account.Active = false;
+                            account.Email += "(deactivate)";
                             Db.Entry(account).State = EntityState.Modified;
                         }
                         else
@@ -213,7 +209,7 @@ namespace PBL.BLL
             {
                 Account account = Get(cccd);
                 if(account == null || account.Birthday != birthday.Date || account.Name != name || account.PhoneNumber != phonenumber
-                    || account.Email != email || !account.Active)
+                    || account.Email != email)
                 {
                     return null;
                 }

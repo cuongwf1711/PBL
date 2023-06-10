@@ -1,0 +1,115 @@
+C:\Documents\.NET\Console\PBL\bin\Debug\PBL.exe.config
+C:\Documents\.NET\Console\PBL\bin\Debug\PBL.exe
+C:\Documents\.NET\Console\PBL\bin\Debug\PBL.pdb
+C:\Documents\.NET\Console\PBL\bin\Debug\EntityFramework.dll
+C:\Documents\.NET\Console\PBL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Documents\.NET\Console\PBL\bin\Debug\EntityFramework.xml
+C:\Documents\.NET\Console\PBL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.csproj.AssemblyReference.cache
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.csproj.SuggestedBindingRedirects.cache
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.Properties.Resources.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.FormLogin.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.FormMain.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucBookRoom.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucManageCustomer.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucManageEmployee.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucManagePayment.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucManageRole.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucManageRoom.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucMyAccount.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.csproj.GenerateResource.cache
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.csproj.CoreCompileInputs.cache
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.csproj.CopyComplete
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.exe
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.pdb
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucManageTypeRoom.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucManageService.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucManageLate.resources
+C:\Documents\.NET\Console\PBL\obj\Debug\PBL.View.ucManageVoucher.resources
+C:\Documents\.NET\PBL\bin\Debug\PBL.exe.config
+C:\Documents\.NET\PBL\bin\Debug\PBL.exe
+C:\Documents\.NET\PBL\bin\Debug\PBL.pdb
+C:\Documents\.NET\PBL\bin\Debug\EntityFramework.dll
+C:\Documents\.NET\PBL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Documents\.NET\PBL\bin\Debug\EntityFramework.xml
+C:\Documents\.NET\PBL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Documents\.NET\PBL\obj\Debug\PBL.csproj.AssemblyReference.cache
+C:\Documents\.NET\PBL\obj\Debug\PBL.csproj.SuggestedBindingRedirects.cache
+C:\Documents\.NET\PBL\obj\Debug\PBL.Properties.Resources.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.FormLogin.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.FormMain.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucBookRoom.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucManageCustomer.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucManageEmployee.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucManageLate.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucManageService.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucManagePayment.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucManageRole.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucManageRoom.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucManageTypeRoom.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucManageVoucher.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.ucMyAccount.resources
+C:\Documents\.NET\PBL\obj\Debug\PBL.csproj.GenerateResource.cache
+C:\Documents\.NET\PBL\obj\Debug\PBL.csproj.CoreCompileInputs.cache
+C:\Documents\.NET\PBL\obj\Debug\PBL.csproj.CopyComplete
+C:\Documents\.NET\PBL\obj\Debug\PBL.exe
+C:\Documents\.NET\PBL\obj\Debug\PBL.pdb
+C:\Documents\.NET\PBL\obj\Debug\PBL.View.FormResetPassword.resources
+C:\Users\LENOVO\Desktop\PBL\bin\Debug\PBL.exe.config
+C:\Users\LENOVO\Desktop\PBL\bin\Debug\PBL.exe
+C:\Users\LENOVO\Desktop\PBL\bin\Debug\PBL.pdb
+C:\Users\LENOVO\Desktop\PBL\bin\Debug\EntityFramework.dll
+C:\Users\LENOVO\Desktop\PBL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\LENOVO\Desktop\PBL\bin\Debug\EntityFramework.xml
+C:\Users\LENOVO\Desktop\PBL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.csproj.SuggestedBindingRedirects.cache
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.Properties.Resources.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.FormLogin.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.FormMain.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.FormResetPassword.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucBookRoom.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucManageCustomer.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucManageEmployee.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucManageLate.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucManageService.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucManagePayment.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucManageRole.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucManageRoom.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucManageTypeRoom.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucManageVoucher.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.View.ucMyAccount.resources
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.csproj.GenerateResource.cache
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.csproj.CopyComplete
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.exe
+C:\Users\LENOVO\Desktop\PBL\obj\Debug\PBL.pdb
+C:\Users\LENOVO\Desktop\PBL - Copy\bin\Debug\PBL.exe.config
+C:\Users\LENOVO\Desktop\PBL - Copy\bin\Debug\PBL.exe
+C:\Users\LENOVO\Desktop\PBL - Copy\bin\Debug\PBL.pdb
+C:\Users\LENOVO\Desktop\PBL - Copy\bin\Debug\EntityFramework.dll
+C:\Users\LENOVO\Desktop\PBL - Copy\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\LENOVO\Desktop\PBL - Copy\bin\Debug\EntityFramework.xml
+C:\Users\LENOVO\Desktop\PBL - Copy\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.csproj.SuggestedBindingRedirects.cache
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.Properties.Resources.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.FormLogin.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.FormMain.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.FormResetPassword.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucBookRoom.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucManageCustomer.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucManageEmployee.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucManageLate.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucManageService.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucManagePayment.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucManageRole.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucManageRoom.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucManageTypeRoom.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucManageVoucher.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.View.ucMyAccount.resources
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.csproj.GenerateResource.cache
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.csproj.CopyComplete
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.exe
+C:\Users\LENOVO\Desktop\PBL - Copy\obj\Debug\PBL.pdb

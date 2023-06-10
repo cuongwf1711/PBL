@@ -13,8 +13,6 @@ namespace PBL.DTO
         public DateTime DateCreate { get; set; }
         public DateTime? DateCheckout { get; set; }
         [Range(0, 1)]
-        public decimal FeeEarly { get; set; }
-        [Range(0, 1)]
         public decimal FeeLate { get; set; }
 
         public int PersonId { get; set; }

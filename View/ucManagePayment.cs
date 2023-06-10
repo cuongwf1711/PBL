@@ -88,8 +88,6 @@ namespace PBL.View
         {
             dgvListPayments.DataSource = StaticFunc.ToDataTable(paymentBLL.GetAll());
             labelTotalPayment.Text = $"Total : {dgvListPayments.Rows.Count}";
-            labelTotalPriceAllPayment.Visible = false;
-            panelGeneral.BringToFront();
         }
         private void BtnDelete_Click(object sender, EventArgs e)
         {
@@ -107,6 +105,7 @@ namespace PBL.View
                     return;
                 }
                 RefreshPanelGeneral(paymentBLL);
+                labelTotalPriceAllPayment.Visible = false;
             }
         }
 
@@ -131,18 +130,14 @@ namespace PBL.View
 
         void FillInfo(PaymentBLL paymentBLL, int paymentId)
         {
-            labelTotalPriceAllPayment.Visible = false;
             cbbDeposit.Enabled = false;
             checkBoxDeposit.Checked = true;
             groupBoxLate.Visible = true;
-            dgvLate.Enabled = false;
             Payment payment = paymentBLL.Get(paymentId);
             dateTimePickerDateCreate.Value = payment.DateCreate;
             checkBoxStatus.Checked = payment.Status;
             labelAccountId.Text = $"AccountId : {payment.PersonId}";
-            labelFeeEarly.Text = $"Fee early (%) : {payment.FeeEarly}";
             labelCustomerId.Text = $"CustomerId : {paymentBLL.GetCustomerId(paymentId)}";
-            labelPhoneNumberCustomer.Text = $"PhoneNumber Customer : {paymentBLL.GetPhoneNumberCustomer(paymentId)}";
             cbbDeposit.SelectedIndex = cbbDeposit.FindString(payment.Deposit.ToString());
             dgvReservations.DataSource = StaticFunc.ToDataTable(paymentBLL.GetReservations(paymentId));
             dgvReservations.Columns["ReservationId"].Visible = false;
@@ -156,16 +151,17 @@ namespace PBL.View
             labelTotalAddition.Text = $"Total : {dgvServices.Rows.Count}";
             labelPriceReservations.Text = paymentBLL.GetPriceReservations(paymentId).ToString();
             labelPriceServices.Text = paymentBLL.GetPriceServices(paymentId).ToString();
-            labelDeposit.Text = paymentBLL.GetPriceDeposit(paymentId).ToString();
+            labelDeposit.Text = (paymentBLL.GetPriceDeposit(paymentId)).ToString();
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
             if (dgvListPayments.SelectedRows.Count == 1 && !Convert.ToBoolean(dgvListPayments.SelectedRows[0].Cells["Status"].Value))
             {
+                labelTotalPriceAllPayment.Visible = false;
                 PaymentBLL paymentBLL = new PaymentBLL();
-                Payment payment = paymentBLL.Get(Convert.ToInt32(dgvListPayments.SelectedRows[0].Cells["PaymentId"].Value));
-                FillInfo(paymentBLL, payment.PaymentId);
+                int paymentId = Convert.ToInt32(dgvListPayments.SelectedRows[0].Cells["PaymentId"].Value);
+                FillInfo(paymentBLL, paymentId);
                 btnOk.Enabled = true;
                 if (cbbDeposit.SelectedIndex == 0)
                 {
@@ -177,42 +173,30 @@ namespace PBL.View
                 else
                 {
                     btnOk.Text = "Checkout";
+                    dgvLate.Enabled = true;
                     labelTotalInGroupBoxLate.Text = "Pay : ";
-                    dgvLate.DataSource = new[] { new { payment.FeeLate } };
-                    labelTotalPriceOnePayment.Text = paymentBLL.GetPriceRemain(payment.PaymentId).ToString();
+                    LateBLL lateBLL = new LateBLL();
+                    dgvLate.DataSource = StaticFunc.ToDataTable(lateBLL.GetAll());
+                    dgvLate.Columns["LateId"].Visible = false;
+                    labelTotalPriceOnePayment.Text = paymentBLL.GetPriceRemain(paymentId).ToString();
                 }
                 panelDetail.BringToFront();
             }
         }
-        private void BtnNoteLate_Click(object sender, EventArgs e)
-        {
-            if (dgvListPayments.SelectedRows.Count == 1 && !Convert.ToBoolean(dgvListPayments.SelectedRows[0].Cells["Status"].Value) 
-                && Convert.ToDecimal(dgvListPayments.SelectedRows[0].Cells["Deposit"].Value) > 0)
-            {
-                PaymentBLL paymentBLL = new PaymentBLL();
-                Payment payment = paymentBLL.Get(Convert.ToInt32(dgvListPayments.SelectedRows[0].Cells["PaymentId"].Value));
-                FillInfo(paymentBLL, payment.PaymentId);
-                dgvLate.Enabled = true;
-                btnOk.Enabled = true;
-                btnOk.Text = "Confirm";
-                labelTotalInGroupBoxLate.Text = "Pay : ";
-                dgvLate.DataSource = StaticFunc.ToDataTable(paymentBLL.GetLates(payment.PaymentId));
-                dgvLate.Columns["LateId"].Visible = false;
-                labelTotalPriceOnePayment.Text = paymentBLL.GetPriceRemain(payment.PaymentId).ToString();
-                panelDetail.BringToFront();
-            }
-        }
+
         private void BtnDetail_Click(object sender, EventArgs e)
         {
             if (dgvListPayments.SelectedRows.Count == 1 && Convert.ToBoolean(dgvListPayments.SelectedRows[0].Cells["Status"].Value))
             {
+                labelTotalPriceAllPayment.Visible = false;
                 PaymentBLL paymentBLL = new PaymentBLL();
                 Payment payment = paymentBLL.Get(Convert.ToInt32(dgvListPayments.SelectedRows[0].Cells["PaymentId"].Value));
-                FillInfo(paymentBLL, payment.PaymentId);
                 btnOk.Enabled = false;
+                FillInfo(paymentBLL, payment.PaymentId);
                 btnOk.Text = payment.DateCheckout.ToString();
                 labelTotalInGroupBoxLate.Text = "Total";
                 dgvLate.DataSource = new[] { new { payment.FeeLate } };
+                dgvLate.Enabled = false;
                 labelTotalPriceOnePayment.Text = paymentBLL.GetPriceTotal(payment.PaymentId).ToString();
                 panelDetail.BringToFront();
             }
@@ -229,53 +213,40 @@ namespace PBL.View
                     payment.Deposit = Convert.ToDecimal(cbbDeposit.SelectedItem);
                     if(!paymentBLL.Update(payment))
                     {
-                        MessageBox.Show("Checkin failed", "ERROR", 0, MessageBoxIcon.Error);
+                        MessageBox.Show("ERROR");
                         return;
                     }
                     RefreshPanelGeneral(paymentBLL);
+                    panelGeneral.BringToFront();
                 }
                 else
                 {
-                    MessageBox.Show("Haven't changed yet", "ERROR", 0, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            else if(dgvLate.Enabled)
-            {
-                if(dgvLate.SelectedRows.Count == 1)
-                {
-                    PaymentBLL paymentBLL = new PaymentBLL();
-                    if (!paymentBLL.AddLate(Convert.ToInt32(dgvListPayments.SelectedRows[0].Cells["PaymentId"].Value), Convert.ToDecimal(dgvLate.SelectedRows[0].Cells["FeeLate"].Value)
-                        , Convert.ToInt32(dgvLate.SelectedRows[0].Cells["Maximum"].Value)))
-                    {
-                        MessageBox.Show("Failed", "ERROR", 0, MessageBoxIcon.Error);
-                        return;
-                    }
-                    RefreshPanelGeneral(paymentBLL);
-                }
-                else
-                {
-                    MessageBox.Show("Haven't changed yet", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }
             else
             {
                 PaymentBLL paymentBLL = new PaymentBLL();
-                if (!paymentBLL.Checkout(Convert.ToInt32(dgvListPayments.SelectedRows[0].Cells["PaymentId"].Value)))
+                if (!paymentBLL.Checkout(Convert.ToInt32(dgvListPayments.SelectedRows[0].Cells["PaymentId"].Value)
+                    , dgvLate.SelectedRows.Count == 1 ? Convert.ToDecimal(dgvLate.SelectedRows[0].Cells["FeeLate"].Value) : 0))
                 {
-                    MessageBox.Show("Checkout failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
                 RefreshPanelGeneral(paymentBLL);
+                panelGeneral.BringToFront();
             }
         }
 
         private void DgvLate_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            PaymentBLL paymentBLL = new PaymentBLL();
-            labelTotalPriceOnePayment.Text = paymentBLL.CalculatePriceNeedPayWhenAddFeeLate(Convert.ToInt32(dgvListPayments.SelectedRows[0].Cells["PaymentId"].Value)
-                , dgvLate.SelectedRows.Count == 1 ? Convert.ToDecimal(dgvLate.SelectedRows[0].Cells["FeeLate"].Value) : 0).ToString();
+            if (dgvLate.SelectedRows.Count == 1 )
+            {
+                PaymentBLL paymentBLL = new PaymentBLL();
+                labelTotalPriceOnePayment.Text = paymentBLL.CalculatePriceNeedPayWhenAddFeeLate(Convert.ToInt32(dgvListPayments.SelectedRows[0].Cells["PaymentId"].Value)
+                    , Convert.ToDecimal(dgvLate.SelectedRows[0].Cells["FeeLate"].Value)).ToString();
+            }
         }
     }
 }

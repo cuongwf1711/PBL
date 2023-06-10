@@ -269,9 +269,9 @@
             // txtCode
             // 
             this.txtCode.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCode.Location = new System.Drawing.Point(302, 524);
+            this.txtCode.Location = new System.Drawing.Point(251, 524);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(443, 51);
+            this.txtCode.Size = new System.Drawing.Size(460, 51);
             this.txtCode.TabIndex = 3;
             // 
             // label

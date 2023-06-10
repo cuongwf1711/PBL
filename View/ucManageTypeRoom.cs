@@ -36,7 +36,7 @@ namespace PBL.View
             }
             else
             {
-                MessageBox.Show("TypeRoomId must be numberic", "ERROR", 0, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR");
             }
         }
 
@@ -52,7 +52,7 @@ namespace PBL.View
                 TypeRoomBLL typeRoomBLL = new TypeRoomBLL();
                 if (!typeRoomBLL.Delete(ids.ToArray()))
                 {
-                    MessageBox.Show("Delete failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
                 RefreshPanelGeneral(typeRoomBLL);
@@ -95,7 +95,7 @@ namespace PBL.View
             {
                 if (!typeRoomBLL.Create(new TypeRoom { Name = txtName.Text }))
                 {
-                    MessageBox.Show("Wrong information and create customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }
@@ -103,7 +103,7 @@ namespace PBL.View
             {
                 if (!typeRoomBLL.Update(new TypeRoom { TypeRoomId = upd, Name = txtName.Text }))
                 {
-                    MessageBox.Show("Wrong information and update customer failed", "ERROR", 0, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR");
                     return;
                 }
             }
